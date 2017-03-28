@@ -1,0 +1,72 @@
+@blue:#87cefa;
+@salmon:lightsalmon;
+@green:#b6fa00;
+@gray:#b6b6b6;
+@gold:gold;
+
+td.dateTill.column-dateTill {
+  padding: 0;
+}
+td.taxonomy-task_state.column-taxonomy-task_state {
+  padding: 0;
+}
+a[href="edit.php?post_type=task&task_state=todo"] {
+  background: @blue;
+  display: block;
+  padding: 1.5em;
+}
+a[href="edit.php?post_type=task&task_state=inprogress"] {
+  background: @gold;
+  display: block;
+  padding: 1.5em;
+}
+a[href="edit.php?post_type=task&task_state=completed"] {
+  background: @green;
+  display: block;
+  padding: 1.5em;
+}
+a[href="edit.php?post_type=task&task_state=delayed"] {
+  background: @salmon;
+  display: block;
+  padding: 1.5em;
+}
+a[href="edit.php?post_type=task&task_state=canceled"] {
+  background: @gray;
+  display: block;
+  padding: 1.5em;
+}
+
+.dateTill{
+  padding:0.5em;
+
+  &.future{
+    background: @blue;
+    &.canceled{
+      background: @gray;
+      .human:after {
+        content: '';
+      }
+    }
+    .human:after {
+      display: inline-block;
+      content: 'to accomplish';
+      margin-left: 0.2em;
+    }
+  }
+
+  &.passed{
+    &.todo, &.inprogress, &.delayed{
+      background: @salmon;
+    }
+    &.completed{
+      background:@green;
+    }
+
+    .human:after {
+      display: inline-block;
+      content: 'ago';
+      margin-left: 0.2em;
+    }
+
+  }
+}
